@@ -1,6 +1,9 @@
 # xlsx-sheetJS-univerJS-convert
 将xlsx/sheetJS读取的文件转换为univer sheet的IWorkbookData类型
 
+xlsx.js或xlsx-js-style读取的文件好像都没有样式，所以这里也**不支持样式转换**
+
+需要导入样式，可以使用excelJS，并使用[excel-univer-convert](https://github.com/tridobar/excelJS-univerJS-convert)
 
 # TS代码
 ```TypeScript
