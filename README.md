@@ -8,6 +8,7 @@ xlsx.js或xlsx-js-style读取的文件好像都没有样式，所以这里也**�
 # TS代码
 ```TypeScript
 // 读取文件
+// const file = event.target.files[0]
 new Promise((resolve, reject) => {
   const reader = new FileReader();
   reader.onload = (e) => {
