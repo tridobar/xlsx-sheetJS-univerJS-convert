@@ -30,7 +30,7 @@ new Promise((resolve, reject) => {
 })
 
 // xlsx json 转 univer json
-convertWorkbookToJson = (workbook, workbookConfig: any = {}) => {
+convertWorkbookToJson(workbook, workbookConfig: any = {}) {
   const sheets = {};
   const sheetOrder = [];
   const utils = XLSX.utils;
@@ -85,10 +85,10 @@ convertWorkbookToJson = (workbook, workbookConfig: any = {}) => {
     sheetOrder.push(sheetId);
   });
   return { ...workbookConfig, sheetOrder: sheetOrder, sheets: sheets };
-};
+}
 
 // univer json 转 xlsx json
-reverseConvertJsonToWorkbook = (jsonData) => {
+reverseConvertJsonToWorkbook(jsonData) {
   const workbook = { SheetNames: [], Sheets: {} };
   const utils = XLSX.utils;
 
@@ -158,4 +158,4 @@ reverseConvertJsonToWorkbook = (jsonData) => {
   });
 
   return workbook;
-};
+}
