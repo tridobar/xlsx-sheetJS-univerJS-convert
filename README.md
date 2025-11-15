@@ -6,8 +6,8 @@ xlsx.js或xlsx-js-style读取的文件好像都没有样式，所以这里也**�
 需要导入样式，可以使用excelJS，并使用[excel-univer-convert](https://github.com/tridobar/excelJS-univerJS-convert)
 
 # TS代码
+## 读取文件
 ```TypeScript
-// 读取文件
 // const file = event.target.files[0]
 new Promise((resolve, reject) => {
   const reader = new FileReader();
@@ -27,10 +27,13 @@ new Promise((resolve, reject) => {
   };
   reader.onerror = (error) => reject(error);
   reader.readAsBinaryString(file);
+}).then((json) => {
+  // 得到json，创建workbook
+  univerAPI.createWorkbook(json);
 })
 
 // xlsx json 转 univer json
-convertWorkbookToJson(workbook, workbookConfig: any = {}) {
+function convertWorkbookToJson(workbook, workbookConfig: any = {}) {
   const sheets = {};
   const sheetOrder = [];
   const utils = XLSX.utils;
@@ -86,9 +89,13 @@ convertWorkbookToJson(workbook, workbookConfig: any = {}) {
   });
   return { ...workbookConfig, sheetOrder: sheetOrder, sheets: sheets };
 }
+```
 
+## 导出文件
+```TypeScript
 // univer json 转 xlsx json
-reverseConvertJsonToWorkbook(jsonData) {
+// const jsonData = univerAPI.getActiveWorkbook().getSnapshot()
+function reverseConvertJsonToWorkbook(jsonData) {
   const workbook = { SheetNames: [], Sheets: {} };
   const utils = XLSX.utils;
 
